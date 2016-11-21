@@ -7,26 +7,29 @@ use PDOException;
 
 class Database
 {
-    private $db;
+    protected static $db;
 
     private function __construct()
     {
         try {
-            $this->db = new PDO(DB_DRIVER . ':host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
+            self::$db = new PDO(DB_DRIVER . ':host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
+            self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             print "Error: " . $e->getMessage();
             die();
         }
     }
 
+    /**
+     * Returns one instance of the Database.
+     * @return \PDO
+     */
     public static function connect()
     {
-        static $inst = null;
-
-        if ($inst === null) {
-            $inst = new Database();
+        if (!self::$db) {
+            new Database();
         }
 
-        return $inst;
+        return self::$db;
     }
 }
