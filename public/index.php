@@ -5,3 +5,7 @@ require_once('../config.php');
 
 // Load Composer's autoload.
 require ROOT . '/vendor/autoload.php';
+
+use App\Models\Task;
+
+var_dump(Task::get());
