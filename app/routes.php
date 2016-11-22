@@ -2,6 +2,4 @@
 
 use Phantom\Routing\Route;
 
-//Route::get('', '', '');
-
-print($_SERVER['REQUEST_URI']);
+Route::get('/tasks', 'TaskController', 'index');

@@ -3,7 +3,7 @@
 /**
  * Load all the configuration.
  */
-require_once(ROOT . '/config.php');
+require_once('../config.php');
 
 /**
  * Load the Composer's autoload.
