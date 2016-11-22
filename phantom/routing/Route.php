@@ -4,20 +4,34 @@ namespace Phantom\Routing;
 
 class Route
 {
-    public static function get($url, $controller, $method)
+    /**
+     * Fires a $method of the $controller if $url meets the current url.
+     * @param $url
+     * @param $args
+     * @return mixed
+     */
+    public static function get($url, $args)
     {
         if (!self::isCurrentUrl($url)) {
-            die();
+            return die();
         }
 
-        $class = NAMESPACE_CONTROLLERS . $controller;
+        $controller = explode('@', $args);
+
+        $class = NAMESPACE_CONTROLLERS . $controller[0];
+
         if (!class_exists($class)) {
-            die();
+            return die();
         }
 
-        return (new $class)->$method();
+        return (new $class)->{$controller[1]}();
     }
 
+    /**
+     * Checks if $url is equal to the current url.
+     * @param $url
+     * @return bool
+     */
     public static function isCurrentUrl($url)
     {
         return $_SERVER['REQUEST_URI'] == $url;

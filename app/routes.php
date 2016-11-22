@@ -2,4 +2,4 @@
 
 use Phantom\Routing\Route;
 
-Route::get('/tasks', 'TaskController', 'index');
+Route::get('/tasks', 'TaskController@index');
