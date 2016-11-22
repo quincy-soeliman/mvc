@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Load all the configuration.
+ * Load the configuration.
  */
 require_once('../config.php');
 
 /**
- * Load the Composer's autoload.
+ * Load Composer's autoload.
  */
 require ROOT . '/vendor/autoload.php';
 
 /**
- * Load the all the routes.
+ * Load all the routes.
  */
 require ROOT . '/app/routes.php';
