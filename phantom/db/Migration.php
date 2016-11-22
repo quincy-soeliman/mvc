@@ -5,13 +5,13 @@ namespace Phantom\Db;
 abstract class Migration
 {
     /**
-     * Creates the table.
+     * Run the migrations.
      * @return mixed
      */
     abstract protected function up();
 
     /**
-     * Drops the table.
+     * Reverse the migrations.
      * @return mixed
      */
     abstract protected function down();

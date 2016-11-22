@@ -65,7 +65,7 @@ abstract class Controller
             $twig->addExtension(new Twig_Extension_Debug());
         }
 
-        print $twig->render($file . '.html.twig', $data);
+        print $twig->render("{$file}.html.twig", $data);
     }
 
     /**

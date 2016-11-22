@@ -24,7 +24,7 @@ class Model
      */
     protected function getModel()
     {
-        $namespace = explode("\\", get_called_class());
+        $namespace = explode('\\', get_called_class());
         return array_pop($namespace);
     }
 
@@ -37,12 +37,8 @@ class Model
     {
         // TODO: Fix this
         switch (rtrim($name)) {
-            case substr($name, -1) == 'e' || substr($name, -1) == 'o':
-                return $name . 's';
-            case substr($name, -1) == 'y':
-                return rtrim($name, 'y') . 'ies';
             default:
-                return $name . 's';
+                return "{$name}s";
         }
     }
 

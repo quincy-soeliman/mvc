@@ -15,7 +15,7 @@ class Database
             self::$db = new PDO(DB_DRIVER . ':host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
             self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
-            print "Error: " . $e->getMessage();
+            print "Error: {$e->getMessage()}";
             die();
         }
     }
