@@ -1,15 +1,16 @@
 <?php
 
-// Load all the configuration.
-require_once('../config.php');
+/**
+ * Load all the configuration.
+ */
+require_once(ROOT . '/config.php');
 
-// Load Composer's autoload.
+/**
+ * Load the Composer's autoload.
+ */
 require ROOT . '/vendor/autoload.php';
 
-use App\Models\Task;
-
-var_dump(Task::get());
-
-use Phantom\View;
-
-(new View('test'))->render();
+/**
+ * Load the all the routes.
+ */
+require ROOT . '/app/routes.php';
