@@ -8,6 +8,7 @@ class Route
      * Fires a $method of the $controller if $url meets the current url.
      * @param $url
      * @param $args
+     *      = {$controller}@{$method}
      * @return mixed
      */
     public static function get($url, $args)
@@ -19,9 +20,8 @@ class Route
         $controller = explode('@', $args);
 
         $class = NAMESPACE_CONTROLLERS . $controller[0];
-
         if (!class_exists($class)) {
-            return die();
+            return die('Controller Class could not be found.');
         }
 
         return (new $class)->{$controller[1]}();
