@@ -2,6 +2,7 @@
 
 namespace Phantom;
 
+use PDO;
 use Phantom\DB\Database;
 
 class Model
@@ -57,6 +58,6 @@ class Model
         $instance = new static;
         $query = (new self)->db->query("SELECT {$columns} FROM {$instance->table}");
 
-        return $query->fetchObject();
+        return $query->fetchAll(PDO::FETCH_OBJ);
     }
 }

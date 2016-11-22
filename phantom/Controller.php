@@ -2,6 +2,10 @@
 
 namespace Phantom;
 
+use Twig_Loader_Filesystem;
+use Twig_Environment;
+use Twig_Extension_Debug;
+
 abstract class Controller
 {
     /**
@@ -48,14 +52,20 @@ abstract class Controller
 
 
     /**
-     * Returns a view with data.
+     * Returns a view with it's $data.
      * @param $file
      * @param array $data
      */
     protected function view($file, array $data = [])
     {
-        extract($data);
-        require_once(ROOT . '/resources/views/' . $file . '.php');
+        $loader = new Twig_Loader_Filesystem(ROOT . '/resources/views/');
+        $twig = new Twig_Environment($loader, ['debug' => DEBUG_MODE]);
+
+        if (DEBUG_MODE) {
+            $twig->addExtension(new Twig_Extension_Debug());
+        }
+
+        print $twig->render($file . '.html.twig', $data);
     }
 
     /**
