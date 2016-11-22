@@ -50,7 +50,6 @@ abstract class Controller
      */
     abstract public function destroy();
 
-
     /**
      * Returns a view with it's $data.
      * @param $file
@@ -63,6 +62,10 @@ abstract class Controller
 
         if (DEBUG_MODE) {
             $twig->addExtension(new Twig_Extension_Debug());
+        }
+
+        if (strpos($file, '.')) {
+            $file = str_replace('.', '/', $file);
         }
 
         print $twig->render("{$file}.html.twig", $data);

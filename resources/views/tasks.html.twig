@@ -6,10 +6,8 @@
 </head>
 <body>
 
-<pre>{{ dump(tasks) }}</pre>
-
 {% for task in tasks %}
-    {{ task.name }}
+    <p>{{ task.id }} => {{ task.name }}</p>
 {% endfor %}
 
 </body>
